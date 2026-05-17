@@ -196,7 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.body.appendChild(rightLamp);
 
   // --- Glowing Climbing Vines for Containers (Projects, Links, Contact) ---
-  const containerSelectors = ['.project-card', '.links-nav', '.contact-section'];
+  const containerSelectors = ['.project-card', '.links-nav', '.contact-form'];
   containerSelectors.forEach(selector => {
     document.querySelectorAll(selector).forEach((el, index) => {
       el.style.position = 'relative';
