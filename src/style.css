@@ -9,7 +9,7 @@
 /* --- CSS Custom Properties (Design Tokens) --- */
 :root {
   /* Surfaces */
-  --surface: #131313;
+  --surface: #1e1e1e;
   --surface-dim: #131313;
   --surface-bright: #393939;
   --surface-container-lowest: #0e0e0e;
@@ -40,7 +40,7 @@
   --on-surface: #e5e2e1;
   --on-surface-variant: #c4c7c8;
   --on-background: #e5e2e1;
-  --background: #131313;
+  --background: #262626;
 
   /* Error */
   --error: #ffb4ab;
@@ -81,7 +81,7 @@ body {
   background-color: var(--background);
   color: var(--on-surface);
   font-family: var(--font-body);
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.6;
   min-height: 100vh;
   display: flex;
@@ -131,7 +131,7 @@ img {
 
 .text-body {
   font-family: var(--font-body);
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
   line-height: 1.6;
   color: var(--on-surface-variant);
@@ -139,7 +139,7 @@ img {
 
 .text-label {
   font-family: var(--font-code);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
   line-height: 1;
   text-transform: uppercase;
@@ -148,7 +148,7 @@ img {
 
 .text-code {
   font-family: var(--font-code);
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
 }
@@ -180,12 +180,12 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 64px;
+  height: 56px;
 }
 
 .nav-brand {
   font-family: var(--font-code);
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 500;
   text-transform: uppercase;
   color: var(--primary);
@@ -201,7 +201,7 @@ img {
 
 .nav-links a {
   font-family: var(--font-code);
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 500;
   text-transform: uppercase;
   color: var(--on-surface-variant);
@@ -271,8 +271,8 @@ img {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 80px 16px;
-  min-height: calc(100vh - 64px);
+  padding: 80px 16px 25vh 16px;
+  min-height: calc(100vh - 56px);
 }
 
 .hero-avatar {
@@ -295,41 +295,41 @@ img {
 
 .hero h1 {
   font-family: var(--font-headline);
-  font-size: clamp(28px, 5vw, 48px);
+  font-size: clamp(32px, 6vw, 48px);
   font-weight: 700;
   color: var(--primary);
-  margin-bottom: 8px;
+  margin-bottom: 16px;
   letter-spacing: -0.02em;
 }
 
 .hero-subtitle {
   font-family: var(--font-body);
-  font-size: 18px;
+  font-size: 15px;
   color: var(--on-surface-variant);
-  margin-bottom: 32px;
-  font-weight: 300;
+  margin-bottom: 24px;
+  font-weight: 400;
 }
 
 .hero-prompt {
   display: inline-flex;
   align-items: center;
   background: var(--surface-container-low);
-  padding: 8px 16px;
+  padding: 12px 24px;
   border: 1px solid var(--outline-variant);
-  margin-bottom: 40px;
+  margin-bottom: 48px;
 }
 
 .hero-prompt .caret {
   font-family: var(--font-code);
-  font-size: 14px;
+  font-size: 20px;
   color: var(--primary);
-  margin-right: 8px;
+  margin-right: 12px;
   animation: blink 1s step-end infinite;
 }
 
 .hero-prompt .handle {
   font-family: var(--font-code);
-  font-size: 12px;
+  font-size: 16px;
   text-transform: uppercase;
   color: var(--on-surface-variant);
   letter-spacing: 0.05em;
@@ -361,8 +361,8 @@ img {
 }
 
 .social-row svg {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
 }
 
 /* --- Links Page --- */
@@ -372,7 +372,7 @@ img {
   gap: 8px;
   color: var(--on-surface-variant);
   font-family: var(--font-code);
-  font-size: 12px;
+  font-size: 16px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   transition: color 0.2s ease;
@@ -388,7 +388,7 @@ img {
 }
 
 .links-back .material-symbols-outlined {
-  font-size: 18px;
+  font-size: 24px;
   transition: transform 0.2s ease;
 }
 
@@ -471,14 +471,14 @@ img {
 
 .link-item-left .link-label {
   font-family: var(--font-code);
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 500;
   text-transform: uppercase;
   color: var(--on-surface);
 }
 
 .link-item .link-icon {
-  font-size: 18px;
+  font-size: 24px;
   color: var(--outline);
   transition: color 0.2s ease;
   position: relative;
@@ -524,7 +524,7 @@ img {
   align-items: center;
   gap: 8px;
   font-family: var(--font-code);
-  font-size: 12px;
+  font-size: 16px;
   text-transform: uppercase;
   color: var(--on-surface-variant);
   border: 1px solid var(--outline-variant);
@@ -541,7 +541,7 @@ img {
 }
 
 .back-btn .material-symbols-outlined {
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .page-title {
@@ -564,6 +564,7 @@ img {
 
 .page-desc {
   color: var(--on-surface-variant);
+  font-size: 18px;
   max-width: 640px;
 }
 
@@ -612,7 +613,7 @@ img {
 .project-card-filename {
   margin-left: 8px;
   font-family: var(--font-code);
-  font-size: 10px;
+  font-size: 14px;
   text-transform: uppercase;
   color: var(--on-surface-variant);
   letter-spacing: 0.05em;
@@ -634,7 +635,7 @@ img {
 
 .project-card-title {
   font-family: var(--font-headline);
-  font-size: 20px;
+  font-size: 26px;
   font-weight: 700;
   color: var(--primary);
   transition: color 0.2s ease;
@@ -646,7 +647,7 @@ img {
 
 .project-card-arrow {
   color: var(--outline-variant);
-  font-size: 24px;
+  font-size: 32px;
   transition: color 0.2s ease;
 }
 
@@ -658,7 +659,7 @@ img {
   color: var(--on-surface-variant);
   margin-bottom: 24px;
   flex-grow: 1;
-  font-size: 15px;
+  font-size: 18px;
   line-height: 1.6;
 }
 
@@ -671,10 +672,10 @@ img {
 
 .project-tag {
   font-family: var(--font-code);
-  font-size: 14px;
+  font-size: 16px;
   color: var(--on-surface-variant);
   border: 1px solid var(--outline-variant);
-  padding: 4px 8px;
+  padding: 6px 12px;
 }
 
 /* --- Contact Page --- */
@@ -702,7 +703,7 @@ img {
 
 .contact-meta {
   font-family: var(--font-code);
-  font-size: 12px;
+  font-size: 16px;
   text-transform: uppercase;
   color: var(--on-surface-variant);
   letter-spacing: 0.05em;
@@ -724,21 +725,21 @@ img {
 
 .status-value {
   font-family: var(--font-headline);
-  font-size: 24px;
+  font-size: 32px;
   font-weight: 700;
   color: var(--primary);
 }
 
 .status-label {
   font-family: var(--font-code);
-  font-size: 10px;
+  font-size: 14px;
   text-transform: uppercase;
   color: var(--outline);
 }
 
 .contact-logs {
   font-family: var(--font-code);
-  font-size: 13px;
+  font-size: 16px;
   color: var(--outline);
   margin-bottom: 32px;
   text-align: center;
@@ -764,7 +765,7 @@ img {
 
 .form-group label {
   font-family: var(--font-code);
-  font-size: 12px;
+  font-size: 16px;
   text-transform: uppercase;
   color: var(--on-surface-variant);
   letter-spacing: 0.05em;
@@ -777,8 +778,8 @@ img {
   border-bottom: 2px solid var(--outline-variant);
   color: var(--on-surface);
   font-family: var(--font-body);
-  font-size: 16px;
-  padding: 12px 0;
+  font-size: 18px;
+  padding: 16px 0;
   outline: none;
   transition: border-color 0.2s ease;
   resize: vertical;
@@ -801,11 +802,11 @@ img {
   background: var(--primary);
   color: var(--background);
   font-family: var(--font-code);
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  padding: 16px 32px;
+  padding: 20px 32px;
   border: 1px solid var(--primary);
   cursor: pointer;
   transition: all 0.2s ease;
