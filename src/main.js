@@ -131,6 +131,10 @@ document.addEventListener('DOMContentLoaded', () => {
       0% { filter: drop-shadow(0 0 15px var(--primary)) drop-shadow(0 0 30px var(--primary)); opacity: 0.85; }
       100% { filter: drop-shadow(0 0 30px var(--primary)) drop-shadow(0 0 60px var(--primary)) drop-shadow(0 0 90px var(--primary)); opacity: 1; }
     }
+    @keyframes greenLampPulse {
+      0% { filter: drop-shadow(0 0 8px #4ade80) drop-shadow(0 0 15px #22c55e); opacity: 0.8; }
+      100% { filter: drop-shadow(0 0 18px #4ade80) drop-shadow(0 0 30px #22c55e) drop-shadow(0 0 45px #15803d); opacity: 1; }
+    }
   `;
   document.head.appendChild(lampStyle);
 
@@ -164,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <svg width="24" height="40" viewBox="0 0 24 40" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
       <path d="M 12 40 Q 8 28 12 16 Q 16 12 12 6" stroke="var(--outline-variant)" stroke-width="2" fill="none" stroke-linecap="round"/>
       <path d="M 11 30 Q 4 28 8 23 Q 12 25 11 30 Z" fill="var(--outline-variant)"/>
-      <circle cx="12" cy="6" r="3.5" fill="#fff" style="animation: lampPulse 3s infinite alternate ease-in-out;"/>
+      <circle cx="12" cy="6" r="3.5" fill="#bbf7d0" style="animation: greenLampPulse 3s infinite alternate ease-in-out;"/>
     </svg>
   `;
   lamp.appendChild(flower1);
@@ -177,7 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
   flower2.innerHTML = `
     <svg width="20" height="30" viewBox="0 0 20 30" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
       <path d="M 10 30 Q 6 20 10 12 Q 14 9 10 4" stroke="var(--outline-variant)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-      <circle cx="10" cy="4" r="3" fill="#fff" style="animation: lampPulse 2.5s infinite alternate ease-in-out;"/>
+      <circle cx="10" cy="4" r="3" fill="#bbf7d0" style="animation: greenLampPulse 2.5s infinite alternate ease-in-out;"/>
     </svg>
   `;
   lamp.appendChild(flower2);
@@ -204,11 +208,11 @@ document.addEventListener('DOMContentLoaded', () => {
         
         <!-- Top drooping glowing bud -->
         <path d="M 24 15 Q 26 10 24 6" stroke="var(--outline-variant)" stroke-width="1.8" fill="none"/>
-        <circle cx="24" cy="6" r="3.5" fill="#fff" style="animation: lampPulse 3s infinite alternate ease-in-out;"/>
+        <circle cx="24" cy="6" r="3.5" fill="#bbf7d0" style="animation: greenLampPulse 3s infinite alternate ease-in-out;"/>
         
         <!-- Middle offset glowing bud -->
         <path d="M 32 55 Q 18 50 15 42" stroke="var(--outline-variant)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-        <circle cx="15" cy="42" r="3" fill="#fff" style="animation: lampPulse 2.4s infinite alternate ease-in-out;"/>
+        <circle cx="15" cy="42" r="3" fill="#bbf7d0" style="animation: greenLampPulse 2.4s infinite alternate ease-in-out;"/>
         
         <!-- Detailed leafy structures -->
         <path d="M 36 78 Q 24 82 28 72 Q 34 72 36 78 Z" fill="var(--outline-variant)"/>
