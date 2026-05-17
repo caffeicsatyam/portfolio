@@ -154,6 +154,34 @@ document.addEventListener('DOMContentLoaded', () => {
   lamp.style.left = '32px';
   lamp.style.pointerEvents = 'none';
   lamp.style.zIndex = '-1';
+
+  // --- Sprouting Flowers at Left Lamp Base ---
+  const flower1 = document.createElement('div');
+  flower1.style.position = 'absolute';
+  flower1.style.bottom = '0';
+  flower1.style.left = '8px';
+  flower1.innerHTML = `
+    <svg width="24" height="40" viewBox="0 0 24 40" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
+      <path d="M 12 40 Q 8 28 12 16 Q 16 12 12 6" stroke="var(--outline-variant)" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path d="M 11 30 Q 4 28 8 23 Q 12 25 11 30 Z" fill="var(--outline-variant)"/>
+      <circle cx="12" cy="6" r="3.5" fill="#fff" style="animation: lampPulse 3s infinite alternate ease-in-out;"/>
+    </svg>
+  `;
+  lamp.appendChild(flower1);
+
+  const flower2 = document.createElement('div');
+  flower2.style.position = 'absolute';
+  flower2.style.bottom = '0';
+  flower2.style.left = '42px';
+  flower2.style.transform = 'scaleX(-1)';
+  flower2.innerHTML = `
+    <svg width="20" height="30" viewBox="0 0 20 30" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
+      <path d="M 10 30 Q 6 20 10 12 Q 14 9 10 4" stroke="var(--outline-variant)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+      <circle cx="10" cy="4" r="3" fill="#fff" style="animation: lampPulse 2.5s infinite alternate ease-in-out;"/>
+    </svg>
+  `;
+  lamp.appendChild(flower2);
+
   document.body.appendChild(lamp);
 
   // --- Artistic SVG Streetlamp (Right) ---
@@ -162,4 +190,37 @@ document.addEventListener('DOMContentLoaded', () => {
   rightLamp.style.right = '32px';
   rightLamp.style.transform = 'scaleX(-1)';
   document.body.appendChild(rightLamp);
+
+  // --- Wall Lamps for Project Cards ---
+  document.querySelectorAll('.project-card').forEach((card, index) => {
+    card.style.position = 'relative';
+    
+    const wallLamp = document.createElement('div');
+    wallLamp.className = 'wall-lamp';
+    wallLamp.innerHTML = `
+      <svg width="30" height="50" viewBox="0 0 30 50" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
+        <!-- Bracket -->
+        <path d="M 0 15 L 18 15 L 18 24" stroke="var(--outline-variant)" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M 0 8 L 0 22" stroke="var(--outline-variant)" stroke-width="3" stroke-linecap="round"/>
+        <!-- Lantern head -->
+        <path d="M 12 24 L 24 24 L 21 36 L 15 36 Z" fill="var(--outline-variant)"/>
+        <!-- Glowing Bulb -->
+        <circle cx="18" cy="30" r="3.5" fill="#fff" style="animation: lampPulse 3.5s infinite alternate ease-in-out;"/>
+      </svg>
+    `;
+    
+    wallLamp.style.position = 'absolute';
+    wallLamp.style.top = '24px';
+    
+    // Position alternate left/right to keep balance
+    if (index % 2 === 0) {
+      wallLamp.style.left = '-20px';
+    } else {
+      wallLamp.style.right = '-20px';
+      wallLamp.style.transform = 'scaleX(-1)';
+    }
+    wallLamp.style.pointerEvents = 'none';
+    wallLamp.style.zIndex = '5';
+    card.appendChild(wallLamp);
+  });
 });
