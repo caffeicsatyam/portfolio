@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
   lamp.style.bottom = '0';
   lamp.style.left = '32px';
   lamp.style.pointerEvents = 'none';
-  lamp.style.zIndex = '50';
+  lamp.style.zIndex = '-1';
   document.body.appendChild(lamp);
 
   // --- Artistic SVG Streetlamp (Right) ---
