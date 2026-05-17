@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
   rightLamp.style.transform = 'scaleX(-1)';
   document.body.appendChild(rightLamp);
 
-  // --- Glowing Climbing Vines for Containers (Projects, Links, Contact) ---
+  // --- Distinct Bioluminescent Flora Species for Different Pages ---
   const containerSelectors = ['.project-card', '.links-nav', '.contact-form'];
   containerSelectors.forEach(selector => {
     document.querySelectorAll(selector).forEach((el, index) => {
@@ -221,34 +221,79 @@ document.addEventListener('DOMContentLoaded', () => {
       const createVine = (side) => {
         const vine = document.createElement('div');
         vine.className = 'card-vine';
-        vine.innerHTML = `
-          <svg width="40" height="110" viewBox="0 0 40 110" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
-            <!-- Organic Vine stem mounting on container edge (x=40) -->
-            <path d="M 40 95 Q 25 80 32 60 Q 12 40 24 20" stroke="var(--outline-variant)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-            
-            <!-- Top Drooping Bell-Flower (Snowdrop/Bluebell shape) -->
-            <path d="M 24 20 Q 25 14 24 10" stroke="var(--outline-variant)" stroke-width="1.8" fill="none"/>
-            <!-- Bell Petals -->
-            <path d="M 20 10 Q 24 2 28 10 Q 24 14 20 10 Z" fill="rgba(74, 222, 128, 0.15)" stroke="var(--outline-variant)" stroke-width="1.2"/>
-            <!-- Drooping Glowing Stamen -->
-            <path d="M 24 10 L 24 15" stroke="var(--outline-variant)" stroke-width="1"/>
-            <circle cx="24" cy="15" r="2.5" fill="#bbf7d0" style="animation: greenLampPulse 3s infinite alternate ease-in-out;"/>
-            
-            <!-- Middle Leaf-Bracket holding a micro-lantern -->
-            <path d="M 32 60 Q 18 55 15 48 M 15 48 L 15 54" stroke="var(--outline-variant)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-            <!-- Micro-Lantern Cap -->
-            <path d="M 11 54 L 19 54 L 15 50 Z" fill="var(--outline-variant)"/>
-            <!-- Glass Frame -->
-            <path d="M 12 54 L 18 54 L 16.5 64 L 13.5 64 Z" stroke="var(--outline-variant)" stroke-width="1" fill="rgba(74, 222, 128, 0.1)"/>
-            <!-- Core Glowing Filament -->
-            <circle cx="15" cy="59" r="2" fill="#fff" style="animation: greenLampPulse 2.4s infinite alternate ease-in-out;"/>
-            
-            <!-- Detailed leafy structures -->
-            <path d="M 36 82 Q 24 86 28 76 Q 34 76 36 82 Z" fill="var(--outline-variant)"/>
-            <path d="M 22 35 Q 12 29 18 23 Q 24 27 22 35 Z" fill="var(--outline-variant)"/>
-          </svg>
-        `;
         
+        let svgContent = '';
+        
+        if (selector === '.project-card') {
+          // --- Species A: Lantern Bell-Vine ---
+          svgContent = `
+            <svg width="40" height="110" viewBox="0 0 40 110" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
+              <!-- Organic Vine stem -->
+              <path d="M 40 95 Q 25 80 32 60 Q 12 40 24 20" stroke="var(--outline-variant)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              
+              <!-- Top Drooping Bell-Flower -->
+              <path d="M 24 20 Q 25 14 24 10" stroke="var(--outline-variant)" stroke-width="1.8" fill="none"/>
+              <path d="M 20 10 Q 24 2 28 10 Q 24 14 20 10 Z" fill="rgba(74, 222, 128, 0.15)" stroke="var(--outline-variant)" stroke-width="1.2"/>
+              <path d="M 24 10 L 24 15" stroke="var(--outline-variant)" stroke-width="1"/>
+              <circle cx="24" cy="15" r="2.5" fill="#bbf7d0" style="animation: greenLampPulse 3s infinite alternate ease-in-out;"/>
+              
+              <!-- Middle Leaf-Bracket holding a micro-lantern -->
+              <path d="M 32 60 Q 18 55 15 48 M 15 48 L 15 54" stroke="var(--outline-variant)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+              <path d="M 11 54 L 19 54 L 15 50 Z" fill="var(--outline-variant)"/>
+              <path d="M 12 54 L 18 54 L 16.5 64 L 13.5 64 Z" stroke="var(--outline-variant)" stroke-width="1" fill="rgba(74, 222, 128, 0.1)"/>
+              <circle cx="15" cy="59" r="2" fill="#fff" style="animation: greenLampPulse 2.4s infinite alternate ease-in-out;"/>
+              
+              <!-- Detailed leafy structures -->
+              <path d="M 36 82 Q 24 86 28 76 Q 34 76 36 82 Z" fill="var(--outline-variant)"/>
+              <path d="M 22 35 Q 12 29 18 23 Q 24 27 22 35 Z" fill="var(--outline-variant)"/>
+            </svg>
+          `;
+        } else if (selector === '.links-nav') {
+          // --- Species B: Bioluminescent Creeping Ivy (Lush, leafy, neon berries) ---
+          svgContent = `
+            <svg width="45" height="120" viewBox="0 0 45 120" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
+              <!-- Creeping Ivy Stem -->
+              <path d="M 45 110 Q 30 85 36 60 Q 18 35 24 15" stroke="var(--outline-variant)" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+              
+              <!-- Ivy Leaf 1 (Bottom, multi-pointed shield) -->
+              <path d="M 36 60 Q 20 58 22 48 Q 30 45 36 60 Z" fill="var(--outline-variant)"/>
+              <circle cx="26" cy="52" r="2.5" fill="#bbf7d0" style="animation: greenLampPulse 2.1s infinite alternate ease-in-out;"/>
+              
+              <!-- Ivy Leaf 2 (Middle) -->
+              <path d="M 24 40 Q 8 40 12 28 Q 20 30 24 40 Z" fill="var(--outline-variant)"/>
+              <circle cx="14" cy="32" r="2" fill="#bbf7d0" style="animation: greenLampPulse 2.7s infinite alternate ease-in-out;"/>
+              
+              <!-- Ivy Leaf 3 (Top) -->
+              <path d="M 24 15 Q 12 10 20 2 Q 28 8 24 15 Z" fill="var(--outline-variant)"/>
+              <circle cx="20" cy="8" r="2.5" fill="#bbf7d0" style="animation: greenLampPulse 1.8s infinite alternate ease-in-out;"/>
+              
+              <!-- Support sprout -->
+              <path d="M 40 85 Q 28 88 32 78 Q 38 78 40 85 Z" fill="var(--outline-variant)"/>
+            </svg>
+          `;
+        } else if (selector === '.contact-form') {
+          // --- Species C: Neon Uplink Sprouts (Geometric, minimal, sleek cyber branches) ---
+          svgContent = `
+            <svg width="40" height="100" viewBox="0 0 40 100" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
+              <!-- Sleek Tech Branch -->
+              <path d="M 40 90 L 30 70 L 32 45 L 20 20" stroke="var(--outline-variant)" stroke-width="2" fill="none" stroke-linecap="round"/>
+              
+              <!-- Shoot 1 (Bottom, straight bracket shape) -->
+              <path d="M 30 70 L 15 60" stroke="var(--outline-variant)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+              <circle cx="15" cy="60" r="3" fill="#bbf7d0" style="animation: greenLampPulse 2s infinite alternate ease-in-out;"/>
+              
+              <!-- Shoot 2 (Middle) -->
+              <path d="M 32 45 L 18 35" stroke="var(--outline-variant)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+              <circle cx="18" cy="35" r="3" fill="#bbf7d0" style="animation: greenLampPulse 2.5s infinite alternate ease-in-out;"/>
+              
+              <!-- Main Uplink Tip -->
+              <path d="M 20 20 L 12 10" stroke="var(--outline-variant)" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <circle cx="12" cy="10" r="3.5" fill="#bbf7d0" style="animation: greenLampPulse 1.6s infinite alternate ease-in-out;"/>
+            </svg>
+          `;
+        }
+        
+        vine.innerHTML = svgContent;
         vine.style.position = 'absolute';
         vine.style.top = '16px';
         vine.style.pointerEvents = 'none';
