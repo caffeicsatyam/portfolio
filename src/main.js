@@ -138,79 +138,83 @@ document.addEventListener('DOMContentLoaded', () => {
   `;
   document.head.appendChild(lampStyle);
 
-  const lamp = document.createElement('div');
-  lamp.innerHTML = `
-    <svg width="160" height="260" viewBox="0 0 160 260" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
-      <!-- Curved Pole -->
-      <path d="M 30 260 L 30 80 C 30 30 60 20 100 20" stroke="var(--outline-variant)" stroke-width="8" fill="none" stroke-linecap="round"/>
-      
-      <!-- Hanging Housing -->
-      <rect x="97" y="16" width="6" height="24" fill="var(--outline-variant)" rx="2"/>
-      <path d="M 85 40 L 115 40 L 108 60 L 92 60 Z" fill="var(--outline-variant)"/>
-      <path d="M 92 60 L 108 60 L 103 75 L 97 75 Z" fill="var(--outline-variant)"/>
-      
-      <!-- Large Glowing Bulb -->
-      <circle cx="100" cy="72" r="14" fill="#fff" style="animation: lampPulse 4s infinite alternate ease-in-out;"/>
-    </svg>
-  `;
-  lamp.style.position = 'fixed';
-  lamp.style.bottom = '0';
-  lamp.style.left = '32px';
-  lamp.style.pointerEvents = 'none';
-  lamp.style.zIndex = '-1';
+  const isLinksPage = window.location.pathname.includes('links.html');
 
-  // --- Sprouting Flowers at Left Lamp Base ---
-  const flower1 = document.createElement('div');
-  flower1.style.position = 'absolute';
-  flower1.style.bottom = '0';
-  flower1.style.left = '8px';
-  flower1.innerHTML = `
-    <svg width="24" height="40" viewBox="0 0 24 40" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
-      <path d="M 12 40 Q 8 28 12 16 Q 16 12 12 6" stroke="var(--outline-variant)" stroke-width="2" fill="none" stroke-linecap="round"/>
-      <path d="M 11 30 Q 4 28 8 23 Q 12 25 11 30 Z" fill="var(--outline-variant)"/>
-      <circle cx="12" cy="6" r="3.5" fill="#bbf7d0" style="animation: greenLampPulse 3s infinite alternate ease-in-out;"/>
-    </svg>
-  `;
-  lamp.appendChild(flower1);
+  if (!isLinksPage) {
+    const lamp = document.createElement('div');
+    lamp.innerHTML = `
+      <svg width="160" height="260" viewBox="0 0 160 260" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
+        <!-- Curved Pole -->
+        <path d="M 30 260 L 30 80 C 30 30 60 20 100 20" stroke="var(--outline-variant)" stroke-width="8" fill="none" stroke-linecap="round"/>
+        
+        <!-- Hanging Housing -->
+        <rect x="97" y="16" width="6" height="24" fill="var(--outline-variant)" rx="2"/>
+        <path d="M 85 40 L 115 40 L 108 60 L 92 60 Z" fill="var(--outline-variant)"/>
+        <path d="M 92 60 L 108 60 L 103 75 L 97 75 Z" fill="var(--outline-variant)"/>
+        
+        <!-- Large Glowing Bulb -->
+        <circle cx="100" cy="72" r="14" fill="#fff" style="animation: lampPulse 4s infinite alternate ease-in-out;"/>
+      </svg>
+    `;
+    lamp.style.position = 'fixed';
+    lamp.style.bottom = '0';
+    lamp.style.left = '32px';
+    lamp.style.pointerEvents = 'none';
+    lamp.style.zIndex = '-1';
 
-  // --- New Sprout 3: Glowing Spiral Fiddlehead/Fern Spine ---
-  const flower3 = document.createElement('div');
-  flower3.style.position = 'absolute';
-  flower3.style.bottom = '0';
-  flower3.style.left = '24px';
-  flower3.innerHTML = `
-    <svg width="24" height="35" viewBox="0 0 24 35" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
-      <!-- Organic Fiddlehead Spiral -->
-      <path d="M 12 35 Q 8 22 14 14 Q 20 8 18 5 Q 15 4 13 7 Q 13 10 16 9" stroke="var(--outline-variant)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-      <!-- Micro Bioluminescent Spores along spine -->
-      <circle cx="18" cy="5" r="2" fill="#bbf7d0" style="animation: greenLampPulse 2s infinite alternate ease-in-out;"/>
-      <circle cx="14" cy="14" r="1.5" fill="#bbf7d0" style="animation: greenLampPulse 2.8s infinite alternate ease-in-out;"/>
-      <circle cx="10" cy="22" r="1.5" fill="#bbf7d0" style="animation: greenLampPulse 1.9s infinite alternate ease-in-out;"/>
-    </svg>
-  `;
-  lamp.appendChild(flower3);
+    // --- Sprouting Flowers at Left Lamp Base ---
+    const flower1 = document.createElement('div');
+    flower1.style.position = 'absolute';
+    flower1.style.bottom = '0';
+    flower1.style.left = '8px';
+    flower1.innerHTML = `
+      <svg width="24" height="40" viewBox="0 0 24 40" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
+        <path d="M 12 40 Q 8 28 12 16 Q 16 12 12 6" stroke="var(--outline-variant)" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M 11 30 Q 4 28 8 23 Q 12 25 11 30 Z" fill="var(--outline-variant)"/>
+        <circle cx="12" cy="6" r="3.5" fill="#bbf7d0" style="animation: greenLampPulse 3s infinite alternate ease-in-out;"/>
+      </svg>
+    `;
+    lamp.appendChild(flower1);
 
-  const flower2 = document.createElement('div');
-  flower2.style.position = 'absolute';
-  flower2.style.bottom = '0';
-  flower2.style.left = '42px';
-  flower2.style.transform = 'scaleX(-1)';
-  flower2.innerHTML = `
-    <svg width="20" height="30" viewBox="0 0 20 30" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
-      <path d="M 10 30 Q 6 20 10 12 Q 14 9 10 4" stroke="var(--outline-variant)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-      <circle cx="10" cy="4" r="3" fill="#bbf7d0" style="animation: greenLampPulse 2.5s infinite alternate ease-in-out;"/>
-    </svg>
-  `;
-  lamp.appendChild(flower2);
+    // --- New Sprout 3: Glowing Spiral Fiddlehead/Fern Spine ---
+    const flower3 = document.createElement('div');
+    flower3.style.position = 'absolute';
+    flower3.style.bottom = '0';
+    flower3.style.left = '24px';
+    flower3.innerHTML = `
+      <svg width="24" height="35" viewBox="0 0 24 35" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
+        <!-- Organic Fiddlehead Spiral -->
+        <path d="M 12 35 Q 8 22 14 14 Q 20 8 18 5 Q 15 4 13 7 Q 13 10 16 9" stroke="var(--outline-variant)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <!-- Micro Bioluminescent Spores along spine -->
+        <circle cx="18" cy="5" r="2" fill="#bbf7d0" style="animation: greenLampPulse 2s infinite alternate ease-in-out;"/>
+        <circle cx="14" cy="14" r="1.5" fill="#bbf7d0" style="animation: greenLampPulse 2.8s infinite alternate ease-in-out;"/>
+        <circle cx="10" cy="22" r="1.5" fill="#bbf7d0" style="animation: greenLampPulse 1.9s infinite alternate ease-in-out;"/>
+      </svg>
+    `;
+    lamp.appendChild(flower3);
 
-  document.body.appendChild(lamp);
+    const flower2 = document.createElement('div');
+    flower2.style.position = 'absolute';
+    flower2.style.bottom = '0';
+    flower2.style.left = '42px';
+    flower2.style.transform = 'scaleX(-1)';
+    flower2.innerHTML = `
+      <svg width="20" height="30" viewBox="0 0 20 30" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
+        <path d="M 10 30 Q 6 20 10 12 Q 14 9 10 4" stroke="var(--outline-variant)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <circle cx="10" cy="4" r="3" fill="#bbf7d0" style="animation: greenLampPulse 2.5s infinite alternate ease-in-out;"/>
+      </svg>
+    `;
+    lamp.appendChild(flower2);
 
-  // --- Artistic SVG Streetlamp (Right) ---
-  const rightLamp = lamp.cloneNode(true);
-  rightLamp.style.left = 'auto';
-  rightLamp.style.right = '32px';
-  rightLamp.style.transform = 'scaleX(-1)';
-  document.body.appendChild(rightLamp);
+    document.body.appendChild(lamp);
+
+    // --- Artistic SVG Streetlamp (Right) ---
+    const rightLamp = lamp.cloneNode(true);
+    rightLamp.style.left = 'auto';
+    rightLamp.style.right = '32px';
+    rightLamp.style.transform = 'scaleX(-1)';
+    document.body.appendChild(rightLamp);
+  }
 
   // --- Distinct Bioluminescent Flora Species for Different Pages ---
   const containerSelectors = ['.project-card', '.links-nav', '.contact-form'];
@@ -249,26 +253,21 @@ document.addEventListener('DOMContentLoaded', () => {
             </svg>
           `;
         } else if (selector === '.links-nav') {
-          // --- Species B: Bioluminescent Creeping Ivy (Lush, leafy, neon berries) ---
+          // --- Species B: Vintage Wall-Lamp Bracket (Attaches flush, scrollwork bracket with glowing lantern) ---
           svgContent = `
-            <svg width="45" height="120" viewBox="0 0 45 120" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
-              <!-- Creeping Ivy Stem -->
-              <path d="M 45 110 Q 30 85 36 60 Q 18 35 24 15" stroke="var(--outline-variant)" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-              
-              <!-- Ivy Leaf 1 (Bottom, multi-pointed shield) -->
-              <path d="M 36 60 Q 20 58 22 48 Q 30 45 36 60 Z" fill="var(--outline-variant)"/>
-              <circle cx="26" cy="52" r="2.5" fill="#bbf7d0" style="animation: greenLampPulse 2.1s infinite alternate ease-in-out;"/>
-              
-              <!-- Ivy Leaf 2 (Middle) -->
-              <path d="M 24 40 Q 8 40 12 28 Q 20 30 24 40 Z" fill="var(--outline-variant)"/>
-              <circle cx="14" cy="32" r="2" fill="#bbf7d0" style="animation: greenLampPulse 2.7s infinite alternate ease-in-out;"/>
-              
-              <!-- Ivy Leaf 3 (Top) -->
-              <path d="M 24 15 Q 12 10 20 2 Q 28 8 24 15 Z" fill="var(--outline-variant)"/>
-              <circle cx="20" cy="8" r="2.5" fill="#bbf7d0" style="animation: greenLampPulse 1.8s infinite alternate ease-in-out;"/>
-              
-              <!-- Support sprout -->
-              <path d="M 40 85 Q 28 88 32 78 Q 38 78 40 85 Z" fill="var(--outline-variant)"/>
+            <svg width="50" height="80" viewBox="0 0 50 80" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
+              <!-- Decorative Iron Scroll Bracket (attaches flush to container border on the right at x=50) -->
+              <path d="M 50 20 Q 30 20 30 40 C 30 55 42 55 45 45" stroke="var(--outline-variant)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              <!-- Diagonal support strut -->
+              <path d="M 50 45 L 35 25" stroke="var(--outline-variant)" stroke-width="1.8" fill="none"/>
+              <!-- Hanging Chain -->
+              <path d="M 30 40 L 30 48" stroke="var(--outline-variant)" stroke-width="1.5"/>
+              <!-- Mini Lantern Cap -->
+              <path d="M 25 48 L 35 48 L 30 44 Z" fill="var(--outline-variant)"/>
+              <!-- Glass Frame -->
+              <path d="M 26 48 L 34 48 L 32.5 58 L 27.5 58 Z" stroke="var(--outline-variant)" stroke-width="1" fill="rgba(74, 222, 128, 0.1)"/>
+              <!-- Core Glowing Filament -->
+              <circle cx="30" cy="53" r="2.5" fill="#bbf7d0" style="animation: greenLampPulse 2s infinite alternate ease-in-out;"/>
             </svg>
           `;
         } else if (selector === '.contact-form') {
@@ -299,11 +298,20 @@ document.addEventListener('DOMContentLoaded', () => {
         vine.style.pointerEvents = 'none';
         vine.style.zIndex = '5';
         
-        if (side === 'left') {
-          vine.style.left = '-40px';
+        if (selector === '.links-nav') {
+          if (side === 'left') {
+            vine.style.left = '-50px';
+          } else {
+            vine.style.right = '-50px';
+            vine.style.transform = 'scaleX(-1)';
+          }
         } else {
-          vine.style.right = '-40px';
-          vine.style.transform = 'scaleX(-1)';
+          if (side === 'left') {
+            vine.style.left = '-40px';
+          } else {
+            vine.style.right = '-40px';
+            vine.style.transform = 'scaleX(-1)';
+          }
         }
         return vine;
       };
