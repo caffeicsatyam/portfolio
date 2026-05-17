@@ -214,35 +214,6 @@ document.addEventListener('DOMContentLoaded', () => {
     rightLamp.style.right = '32px';
     rightLamp.style.transform = 'scaleX(-1)';
     document.body.appendChild(rightLamp);
-
-    // --- Silhouette of Boy Reading under Left Lamp ONLY ---
-    const boy = document.createElement('div');
-    boy.style.position = 'absolute';
-    boy.style.bottom = '0';
-    boy.style.left = '0';
-    boy.style.pointerEvents = 'none';
-    boy.innerHTML = `
-      <svg width="160" height="260" viewBox="0 0 160 260" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
-        <!-- Scaled Group centered at the pole base (30, 260) -->
-        <g transform="scale(1.4)" transform-origin="30 260">
-          <!-- Leaning Back and Torso -->
-          <path d="M 33 260 C 34 240, 38 226, 45 224 C 46 222, 45 220, 44 218 C 42 216, 43 208, 47 206 C 51 204, 54 209, 52 215 C 51 218, 49 221, 48 223 C 50 228, 52 238, 45 260 Z" fill="var(--outline-variant)"/>
-          
-          <!-- Arms holding book -->
-          <path d="M 44 226 Q 54 230 58 238" stroke="var(--outline-variant)" stroke-width="3" fill="none" stroke-linecap="round"/>
-          
-          <!-- Bent Legs -->
-          <path d="M 41 260 Q 64 242 56 260" stroke="var(--outline-variant)" stroke-width="4.5" fill="none" stroke-linecap="round"/>
-          
-          <!-- Glowing Book -->
-          <path d="M 56 238 Q 61 234 66 237 Q 71 234 76 237 L 75 241 Q 70 238 66 241 Q 61 238 56 241 Z" fill="#bbf7d0" style="filter: drop-shadow(0 0 5px #4ade80);"/>
-          
-          <!-- Book Glow cast on face -->
-          <polygon points="48,222 62,236 54,236" fill="rgba(74, 222, 128, 0.15)" style="mix-blend-mode: screen;"/>
-        </g>
-      </svg>
-    `;
-    lamp.appendChild(boy);
   }
 
   // --- Distinct Bioluminescent Flora Species for Different Pages ---
