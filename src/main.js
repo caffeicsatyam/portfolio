@@ -127,13 +127,25 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Artistic SVG Streetlamp ---
   const lampStyle = document.createElement('style');
   lampStyle.innerHTML = `
+    .glow-bulb {
+      filter: drop-shadow(0 0 12px var(--primary)) drop-shadow(0 0 24px var(--primary));
+      will-change: opacity;
+    }
+    .glow-spore {
+      filter: drop-shadow(0 0 6px #4ade80);
+      will-change: opacity;
+    }
+    .glow-spore-white {
+      filter: drop-shadow(0 0 6px #ffffff);
+      will-change: opacity;
+    }
     @keyframes lampPulse {
-      0% { filter: drop-shadow(0 0 15px var(--primary)) drop-shadow(0 0 30px var(--primary)); opacity: 0.85; }
-      100% { filter: drop-shadow(0 0 30px var(--primary)) drop-shadow(0 0 60px var(--primary)) drop-shadow(0 0 90px var(--primary)); opacity: 1; }
+      0% { opacity: 0.6; }
+      100% { opacity: 1; }
     }
     @keyframes greenLampPulse {
-      0% { filter: drop-shadow(0 0 8px #4ade80) drop-shadow(0 0 15px #22c55e); opacity: 0.8; }
-      100% { filter: drop-shadow(0 0 18px #4ade80) drop-shadow(0 0 30px #22c55e) drop-shadow(0 0 45px #15803d); opacity: 1; }
+      0% { opacity: 0.45; }
+      100% { opacity: 1; }
     }
   `;
   document.head.appendChild(lampStyle);
@@ -154,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <path d="M 92 60 L 108 60 L 103 75 L 97 75 Z" fill="var(--outline-variant)"/>
         
         <!-- Large Glowing Bulb -->
-        <circle cx="100" cy="72" r="14" fill="#fff" style="animation: lampPulse 4s infinite alternate ease-in-out;"/>
+        <circle class="glow-bulb" cx="100" cy="72" r="14" fill="#fff" style="animation: lampPulse 4s infinite alternate ease-in-out;"/>
       </svg>
     `;
     lamp.style.position = 'fixed';
@@ -172,7 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <svg width="24" height="40" viewBox="0 0 24 40" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
         <path d="M 12 40 Q 8 28 12 16 Q 16 12 12 6" stroke="var(--outline-variant)" stroke-width="2" fill="none" stroke-linecap="round"/>
         <path d="M 11 30 Q 4 28 8 23 Q 12 25 11 30 Z" fill="var(--outline-variant)"/>
-        <circle cx="12" cy="6" r="3.5" fill="#bbf7d0" style="animation: greenLampPulse 3s infinite alternate ease-in-out;"/>
+        <circle class="glow-spore" cx="12" cy="6" r="3.5" fill="#bbf7d0" style="animation: greenLampPulse 3s infinite alternate ease-in-out;"/>
       </svg>
     `;
     lamp.appendChild(flower1);
@@ -187,9 +199,9 @@ document.addEventListener('DOMContentLoaded', () => {
         <!-- Organic Fiddlehead Spiral -->
         <path d="M 12 35 Q 8 22 14 14 Q 20 8 18 5 Q 15 4 13 7 Q 13 10 16 9" stroke="var(--outline-variant)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
         <!-- Micro Bioluminescent Spores along spine -->
-        <circle cx="18" cy="5" r="2" fill="#bbf7d0" style="animation: greenLampPulse 2s infinite alternate ease-in-out;"/>
-        <circle cx="14" cy="14" r="1.5" fill="#bbf7d0" style="animation: greenLampPulse 2.8s infinite alternate ease-in-out;"/>
-        <circle cx="10" cy="22" r="1.5" fill="#bbf7d0" style="animation: greenLampPulse 1.9s infinite alternate ease-in-out;"/>
+        <circle class="glow-spore" cx="18" cy="5" r="2" fill="#bbf7d0" style="animation: greenLampPulse 2s infinite alternate ease-in-out;"/>
+        <circle class="glow-spore" cx="14" cy="14" r="1.5" fill="#bbf7d0" style="animation: greenLampPulse 2.8s infinite alternate ease-in-out;"/>
+        <circle class="glow-spore" cx="10" cy="22" r="1.5" fill="#bbf7d0" style="animation: greenLampPulse 1.9s infinite alternate ease-in-out;"/>
       </svg>
     `;
     lamp.appendChild(flower3);
@@ -202,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
     flower2.innerHTML = `
       <svg width="20" height="30" viewBox="0 0 20 30" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
         <path d="M 10 30 Q 6 20 10 12 Q 14 9 10 4" stroke="var(--outline-variant)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-        <circle cx="10" cy="4" r="3" fill="#bbf7d0" style="animation: greenLampPulse 2.5s infinite alternate ease-in-out;"/>
+        <circle class="glow-spore" cx="10" cy="4" r="3" fill="#bbf7d0" style="animation: greenLampPulse 2.5s infinite alternate ease-in-out;"/>
       </svg>
     `;
     lamp.appendChild(flower2);
@@ -276,10 +288,10 @@ document.addEventListener('DOMContentLoaded', () => {
       <svg width="180" height="320" viewBox="0 0 180 320" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
         <path d="M 0 0 C 30 40, 10 120, 50 180 C 70 220, 30 280, 40 320" stroke="var(--outline-variant)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
         <path d="M 25 75 Q -5 130, 15 190" stroke="var(--outline-variant)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-        <circle cx="40" cy="320" r="3" fill="#bbf7d0" style="animation: greenLampPulse 2s infinite alternate ease-in-out;"/>
-        <circle cx="15" cy="190" r="2.5" fill="#bbf7d0" style="animation: greenLampPulse 2.8s infinite alternate ease-in-out;"/>
-        <circle cx="43" cy="130" r="2.5" fill="#bbf7d0" style="animation: greenLampPulse 2.2s infinite alternate ease-in-out;"/>
-        <circle cx="12" cy="85" r="2" fill="#bbf7d0" style="animation: greenLampPulse 3.2s infinite alternate ease-in-out;"/>
+        <circle class="glow-spore" cx="40" cy="320" r="3" fill="#bbf7d0" style="animation: greenLampPulse 2s infinite alternate ease-in-out;"/>
+        <circle class="glow-spore" cx="15" cy="190" r="2.5" fill="#bbf7d0" style="animation: greenLampPulse 2.8s infinite alternate ease-in-out;"/>
+        <circle class="glow-spore" cx="43" cy="130" r="2.5" fill="#bbf7d0" style="animation: greenLampPulse 2.2s infinite alternate ease-in-out;"/>
+        <circle class="glow-spore" cx="12" cy="85" r="2" fill="#bbf7d0" style="animation: greenLampPulse 3.2s infinite alternate ease-in-out;"/>
         <path d="M 27 55 Q 45 62, 37 70 Z" fill="rgba(74, 222, 128, 0.15)" stroke="var(--outline-variant)" stroke-width="1"/>
         <path d="M 38 140 Q 62 148, 50 160 Z" fill="rgba(74, 222, 128, 0.15)" stroke="var(--outline-variant)" stroke-width="1"/>
       </svg>
@@ -308,11 +320,11 @@ document.addEventListener('DOMContentLoaded', () => {
         <path d="M 66 210 Q 91 195, 84 210 Z" fill="var(--outline-variant)"/>
         <path d="M 80 165 Q 105 150, 98 165 Z" fill="var(--outline-variant)"/>
         <path d="M 88 115 Q 110 95, 102 110 Z" fill="var(--outline-variant)"/>
-        <circle cx="60" cy="260" r="1.8" fill="#bbf7d0" style="animation: greenLampPulse 2.1s infinite alternate ease-in-out;"/>
-        <circle cx="84" cy="210" r="1.8" fill="#bbf7d0" style="animation: greenLampPulse 2.7s infinite alternate ease-in-out;"/>
-        <circle cx="98" cy="165" r="2.2" fill="#bbf7d0" style="animation: greenLampPulse 1.8s infinite alternate ease-in-out;"/>
-        <circle cx="102" cy="110" r="2.2" fill="#bbf7d0" style="animation: greenLampPulse 2.5s infinite alternate ease-in-out;"/>
-        <circle cx="75" cy="30" r="4" fill="#fff" style="animation: greenLampPulse 3.5s infinite alternate ease-in-out;"/>
+        <circle class="glow-spore" cx="60" cy="260" r="1.8" fill="#bbf7d0" style="animation: greenLampPulse 2.1s infinite alternate ease-in-out;"/>
+        <circle class="glow-spore" cx="84" cy="210" r="1.8" fill="#bbf7d0" style="animation: greenLampPulse 2.7s infinite alternate ease-in-out;"/>
+        <circle class="glow-spore" cx="98" cy="165" r="2.2" fill="#bbf7d0" style="animation: greenLampPulse 1.8s infinite alternate ease-in-out;"/>
+        <circle class="glow-spore" cx="102" cy="110" r="2.2" fill="#bbf7d0" style="animation: greenLampPulse 2.5s infinite alternate ease-in-out;"/>
+        <circle class="glow-spore-white" cx="75" cy="30" r="4" fill="#fff" style="animation: greenLampPulse 3.5s infinite alternate ease-in-out;"/>
       </svg>
     `;
     document.body.appendChild(bottomLeftFern);
@@ -338,7 +350,7 @@ document.addEventListener('DOMContentLoaded', () => {
         miniSprout.innerHTML = `
           <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
             <path d="M 20 10 Q 10 8, 8 2" stroke="var(--outline-variant)" stroke-width="1.3" fill="none" stroke-linecap="round"/>
-            <circle cx="8" cy="2" r="1.5" fill="#bbf7d0" style="animation: greenLampPulse ${2 + index * 0.2}s infinite alternate ease-in-out;"/>
+            <circle class="glow-spore" cx="8" cy="2" r="1.5" fill="#bbf7d0" style="animation: greenLampPulse ${2 + index * 0.2}s infinite alternate ease-in-out;"/>
           </svg>
         `;
       } else {
@@ -347,7 +359,7 @@ document.addEventListener('DOMContentLoaded', () => {
         miniSprout.innerHTML = `
           <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
             <path d="M 20 10 Q 10 8, 8 2" stroke="var(--outline-variant)" stroke-width="1.3" fill="none" stroke-linecap="round"/>
-            <circle cx="8" cy="2" r="1.5" fill="#bbf7d0" style="animation: greenLampPulse ${2.3 + index * 0.25}s infinite alternate ease-in-out;"/>
+            <circle class="glow-spore" cx="8" cy="2" r="1.5" fill="#bbf7d0" style="animation: greenLampPulse ${2.3 + index * 0.25}s infinite alternate ease-in-out;"/>
           </svg>
         `;
       }
@@ -378,13 +390,13 @@ document.addEventListener('DOMContentLoaded', () => {
               <path d="M 24 20 Q 25 14 24 10" stroke="var(--outline-variant)" stroke-width="1.8" fill="none"/>
               <path d="M 20 10 Q 24 2 28 10 Q 24 14 20 10 Z" fill="rgba(74, 222, 128, 0.15)" stroke="var(--outline-variant)" stroke-width="1.2"/>
               <path d="M 24 10 L 24 15" stroke="var(--outline-variant)" stroke-width="1"/>
-              <circle cx="24" cy="15" r="2.5" fill="#bbf7d0" style="animation: greenLampPulse 3s infinite alternate ease-in-out;"/>
+              <circle class="glow-spore" cx="24" cy="15" r="2.5" fill="#bbf7d0" style="animation: greenLampPulse 3s infinite alternate ease-in-out;"/>
               
               <!-- Middle Leaf-Bracket holding a micro-lantern -->
               <path d="M 32 60 Q 18 55 15 48 M 15 48 L 15 54" stroke="var(--outline-variant)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
               <path d="M 11 54 L 19 54 L 15 50 Z" fill="var(--outline-variant)"/>
               <path d="M 12 54 L 18 54 L 16.5 64 L 13.5 64 Z" stroke="var(--outline-variant)" stroke-width="1" fill="rgba(74, 222, 128, 0.1)"/>
-              <circle cx="15" cy="59" r="2" fill="#fff" style="animation: greenLampPulse 2.4s infinite alternate ease-in-out;"/>
+              <circle class="glow-spore-white" cx="15" cy="59" r="2" fill="#fff" style="animation: greenLampPulse 2.4s infinite alternate ease-in-out;"/>
               
               <!-- Detailed leafy structures -->
               <path d="M 36 82 Q 24 86 28 76 Q 34 76 36 82 Z" fill="var(--outline-variant)"/>
@@ -406,7 +418,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <!-- Glass Frame -->
               <path d="M 26 48 L 34 48 L 32.5 58 L 27.5 58 Z" stroke="var(--outline-variant)" stroke-width="1" fill="rgba(74, 222, 128, 0.1)"/>
               <!-- Core Glowing Filament -->
-              <circle cx="30" cy="53" r="2.5" fill="#bbf7d0" style="animation: greenLampPulse 2s infinite alternate ease-in-out;"/>
+              <circle class="glow-spore" cx="30" cy="53" r="2.5" fill="#bbf7d0" style="animation: greenLampPulse 2s infinite alternate ease-in-out;"/>
             </svg>
           `;
         } else if (selector === '.contact-form') {
@@ -418,15 +430,15 @@ document.addEventListener('DOMContentLoaded', () => {
               
               <!-- Shoot 1 (Bottom, straight bracket shape) -->
               <path d="M 30 70 L 15 60" stroke="var(--outline-variant)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-              <circle cx="15" cy="60" r="3" fill="#bbf7d0" style="animation: greenLampPulse 2s infinite alternate ease-in-out;"/>
+              <circle class="glow-spore" cx="15" cy="60" r="3" fill="#bbf7d0" style="animation: greenLampPulse 2s infinite alternate ease-in-out;"/>
               
               <!-- Shoot 2 (Middle) -->
               <path d="M 32 45 L 18 35" stroke="var(--outline-variant)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-              <circle cx="18" cy="35" r="3" fill="#bbf7d0" style="animation: greenLampPulse 2.5s infinite alternate ease-in-out;"/>
+              <circle class="glow-spore" cx="18" cy="35" r="3" fill="#bbf7d0" style="animation: greenLampPulse 2.5s infinite alternate ease-in-out;"/>
               
               <!-- Main Uplink Tip -->
               <path d="M 20 20 L 12 10" stroke="var(--outline-variant)" stroke-width="2" fill="none" stroke-linecap="round"/>
-              <circle cx="12" cy="10" r="3.5" fill="#bbf7d0" style="animation: greenLampPulse 1.6s infinite alternate ease-in-out;"/>
+              <circle class="glow-spore" cx="12" cy="10" r="3.5" fill="#bbf7d0" style="animation: greenLampPulse 1.6s infinite alternate ease-in-out;"/>
             </svg>
           `;
         }
