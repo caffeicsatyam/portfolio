@@ -104,4 +104,62 @@ document.addEventListener('DOMContentLoaded', () => {
     el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
     observer.observe(el);
   });
+
+  // --- Dynamic Spotlight Effect ---
+  const glow = document.createElement('div');
+  glow.style.position = 'fixed';
+  glow.style.top = '0';
+  glow.style.left = '0';
+  glow.style.width = '100vw';
+  glow.style.height = '100vh';
+  glow.style.pointerEvents = 'none';
+  glow.style.zIndex = '9999';
+  glow.style.background = 'radial-gradient(600px circle at var(--mouse-x, 50vw) var(--mouse-y, 50vh), rgba(255, 255, 255, 0.15), transparent 40%)';
+  document.body.appendChild(glow);
+
+  document.addEventListener('mousemove', (e) => {
+    window.requestAnimationFrame(() => {
+      glow.style.setProperty('--mouse-x', `${e.clientX}px`);
+      glow.style.setProperty('--mouse-y', `${e.clientY}px`);
+    });
+  });
+
+  // --- Artistic SVG Streetlamp ---
+  const lampStyle = document.createElement('style');
+  lampStyle.innerHTML = `
+    @keyframes lampPulse {
+      0% { filter: drop-shadow(0 0 15px var(--primary)) drop-shadow(0 0 30px var(--primary)); opacity: 0.85; }
+      100% { filter: drop-shadow(0 0 30px var(--primary)) drop-shadow(0 0 60px var(--primary)) drop-shadow(0 0 90px var(--primary)); opacity: 1; }
+    }
+  `;
+  document.head.appendChild(lampStyle);
+
+  const lamp = document.createElement('div');
+  lamp.innerHTML = `
+    <svg width="160" height="260" viewBox="0 0 160 260" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
+      <!-- Curved Pole -->
+      <path d="M 30 260 L 30 80 C 30 30 60 20 100 20" stroke="var(--outline-variant)" stroke-width="8" fill="none" stroke-linecap="round"/>
+      
+      <!-- Hanging Housing -->
+      <rect x="97" y="16" width="6" height="24" fill="var(--outline-variant)" rx="2"/>
+      <path d="M 85 40 L 115 40 L 108 60 L 92 60 Z" fill="var(--outline-variant)"/>
+      <path d="M 92 60 L 108 60 L 103 75 L 97 75 Z" fill="var(--outline-variant)"/>
+      
+      <!-- Large Glowing Bulb -->
+      <circle cx="100" cy="72" r="14" fill="#fff" style="animation: lampPulse 4s infinite alternate ease-in-out;"/>
+    </svg>
+  `;
+  lamp.style.position = 'fixed';
+  lamp.style.bottom = '0';
+  lamp.style.left = '32px';
+  lamp.style.pointerEvents = 'none';
+  lamp.style.zIndex = '50';
+  document.body.appendChild(lamp);
+
+  // --- Artistic SVG Streetlamp (Right) ---
+  const rightLamp = lamp.cloneNode(true);
+  rightLamp.style.left = 'auto';
+  rightLamp.style.right = '32px';
+  rightLamp.style.transform = 'scaleX(-1)';
+  document.body.appendChild(rightLamp);
 });

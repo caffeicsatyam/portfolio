@@ -79,6 +79,11 @@ html {
 
 body {
   background-color: var(--background);
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: center top;
   color: var(--on-surface);
   font-family: var(--font-body);
   font-size: 18px;
@@ -87,6 +92,8 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+
 
 ::selection {
   background: var(--primary-container);
