@@ -248,6 +248,111 @@ document.addEventListener('DOMContentLoaded', () => {
     grass.style.backgroundRepeat = 'repeat-x';
     grass.style.opacity = '0.7';
     document.body.appendChild(grass);
+  } else {
+    // --- Distinct Bioluminescent Elements specifically for Links Directory Page ---
+    
+    // 1. Bottom grass for Links Page (thin, elegant)
+    const grass = document.createElement('div');
+    grass.style.position = 'fixed';
+    grass.style.bottom = '0';
+    grass.style.left = '0';
+    grass.style.right = '0';
+    grass.style.pointerEvents = 'none';
+    grass.style.zIndex = '-2';
+    grass.style.height = '16px';
+    grass.style.backgroundImage = `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='16' viewBox='0 0 120 16'><path d='M 10 16 Q 15 7 8 3 Q 18 8 18 16 M 40 16 Q 35 8 30 4 M 38 13 Q 30 12 32 13 M 36 10 Q 28 9 30 10 M 34 8 Q 26 7 28 8 M 39 13 Q 47 12 45 13 M 37 10 Q 45 9 43 10 M 35 8 Q 43 7 41 8 M 70 16 Q 65 9 70 7 Q 75 9 70 16 M 95 16 Q 92 7 95 4 M 92 8 Q 86 7 88 8 M 97 8 Q 103 7 101 8' stroke='%23444748' stroke-width='1.3' fill='none' stroke-linecap='round'/><circle cx='8' cy='3' r='1' fill='%23bbf7d0'/><circle cx='70' cy='7' r='1.2' fill='%23bbf7d0'/><circle cx='95' cy='4' r='1.2' fill='%23bbf7d0'/><circle cx='92' cy='5' r='1' fill='%23bbf7d0'/><circle cx='98' cy='5' r='1' fill='%23bbf7d0'/></svg>")`;
+    grass.style.backgroundRepeat = 'repeat-x';
+    grass.style.opacity = '0.7';
+    document.body.appendChild(grass);
+
+    // 2. Top-Left Hanging Vine
+    const topLeftVine = document.createElement('div');
+    topLeftVine.style.position = 'fixed';
+    topLeftVine.style.top = '0';
+    topLeftVine.style.left = '0';
+    topLeftVine.style.pointerEvents = 'none';
+    topLeftVine.style.zIndex = '-1';
+    topLeftVine.innerHTML = `
+      <svg width="180" height="320" viewBox="0 0 180 320" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
+        <path d="M 0 0 C 30 40, 10 120, 50 180 C 70 220, 30 280, 40 320" stroke="var(--outline-variant)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <path d="M 25 75 Q -5 130, 15 190" stroke="var(--outline-variant)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <circle cx="40" cy="320" r="3" fill="#bbf7d0" style="animation: greenLampPulse 2s infinite alternate ease-in-out;"/>
+        <circle cx="15" cy="190" r="2.5" fill="#bbf7d0" style="animation: greenLampPulse 2.8s infinite alternate ease-in-out;"/>
+        <circle cx="43" cy="130" r="2.5" fill="#bbf7d0" style="animation: greenLampPulse 2.2s infinite alternate ease-in-out;"/>
+        <circle cx="12" cy="85" r="2" fill="#bbf7d0" style="animation: greenLampPulse 3.2s infinite alternate ease-in-out;"/>
+        <path d="M 27 55 Q 45 62, 37 70 Z" fill="rgba(74, 222, 128, 0.15)" stroke="var(--outline-variant)" stroke-width="1"/>
+        <path d="M 38 140 Q 62 148, 50 160 Z" fill="rgba(74, 222, 128, 0.15)" stroke="var(--outline-variant)" stroke-width="1"/>
+      </svg>
+    `;
+    document.body.appendChild(topLeftVine);
+
+    // 3. Top-Right Hanging Vine (Mirrored)
+    const topRightVine = topLeftVine.cloneNode(true);
+    topRightVine.style.left = 'auto';
+    topRightVine.style.right = '0';
+    topRightVine.style.transform = 'scaleX(-1)';
+    document.body.appendChild(topRightVine);
+
+    // 4. Bottom-Left Floor Fern Sprout
+    const bottomLeftFern = document.createElement('div');
+    bottomLeftFern.style.position = 'fixed';
+    bottomLeftFern.style.bottom = '0';
+    bottomLeftFern.style.left = '0';
+    bottomLeftFern.style.pointerEvents = 'none';
+    bottomLeftFern.style.zIndex = '-1';
+    bottomLeftFern.innerHTML = `
+      <svg width="200" height="300" viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
+        <path d="M 0 300 Q 60 250, 90 160 Q 100 110, 75 30" stroke="var(--outline-variant)" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M 0 300 Q 40 210, 30 120" stroke="var(--outline-variant)" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M 42 255 Q 67 245, 60 260 Z" fill="var(--outline-variant)"/>
+        <path d="M 66 210 Q 91 195, 84 210 Z" fill="var(--outline-variant)"/>
+        <path d="M 80 165 Q 105 150, 98 165 Z" fill="var(--outline-variant)"/>
+        <path d="M 88 115 Q 110 95, 102 110 Z" fill="var(--outline-variant)"/>
+        <circle cx="60" cy="260" r="1.8" fill="#bbf7d0" style="animation: greenLampPulse 2.1s infinite alternate ease-in-out;"/>
+        <circle cx="84" cy="210" r="1.8" fill="#bbf7d0" style="animation: greenLampPulse 2.7s infinite alternate ease-in-out;"/>
+        <circle cx="98" cy="165" r="2.2" fill="#bbf7d0" style="animation: greenLampPulse 1.8s infinite alternate ease-in-out;"/>
+        <circle cx="102" cy="110" r="2.2" fill="#bbf7d0" style="animation: greenLampPulse 2.5s infinite alternate ease-in-out;"/>
+        <circle cx="75" cy="30" r="4" fill="#fff" style="animation: greenLampPulse 3.5s infinite alternate ease-in-out;"/>
+      </svg>
+    `;
+    document.body.appendChild(bottomLeftFern);
+
+    // 5. Bottom-Right Floor Fern Sprout (Mirrored)
+    const bottomRightFern = bottomLeftFern.cloneNode(true);
+    bottomRightFern.style.left = 'auto';
+    bottomRightFern.style.right = '0';
+    bottomRightFern.style.transform = 'scaleX(-1)';
+    document.body.appendChild(bottomRightFern);
+
+    // 6. Dynamic Card Sprouts wrapping around individual Link items
+    document.querySelectorAll('.links-nav .link-item').forEach((item, index) => {
+      const miniSprout = document.createElement('div');
+      miniSprout.style.position = 'absolute';
+      miniSprout.style.top = '14px';
+      miniSprout.style.pointerEvents = 'none';
+      miniSprout.style.zIndex = '5';
+      
+      const isLeft = index % 2 === 0;
+      if (isLeft) {
+        miniSprout.style.left = '-18px';
+        miniSprout.innerHTML = `
+          <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
+            <path d="M 20 10 Q 10 8, 8 2" stroke="var(--outline-variant)" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+            <circle cx="8" cy="2" r="1.5" fill="#bbf7d0" style="animation: greenLampPulse ${2 + index * 0.2}s infinite alternate ease-in-out;"/>
+          </svg>
+        `;
+      } else {
+        miniSprout.style.right = '-18px';
+        miniSprout.style.transform = 'scaleX(-1)';
+        miniSprout.innerHTML = `
+          <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
+            <path d="M 20 10 Q 10 8, 8 2" stroke="var(--outline-variant)" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+            <circle cx="8" cy="2" r="1.5" fill="#bbf7d0" style="animation: greenLampPulse ${2.3 + index * 0.25}s infinite alternate ease-in-out;"/>
+          </svg>
+        `;
+      }
+      item.appendChild(miniSprout);
+    });
   }
 
   // --- Distinct Bioluminescent Flora Species for Different Pages ---
