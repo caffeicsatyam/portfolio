@@ -29,6 +29,21 @@ document.addEventListener('DOMContentLoaded', () => {
   if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
+
+      // Extract form values
+      const name = document.getElementById('userName').value;
+      const email = document.getElementById('userEmail').value;
+      const subject = document.getElementById('userSubject').value || 'Message from Portfolio';
+      const message = document.getElementById('userMessage').value;
+
+      // Construct mailto URL
+      const bodyText = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+      const mailtoLink = `mailto:satyamchaturvedibbk@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
+
+      // Trigger the email client
+      window.location.href = mailtoLink;
+
+      // Visual feedback
       const btn = contactForm.querySelector('.form-submit');
       const originalText = btn.innerHTML;
       btn.innerHTML = '<span class="material-symbols-outlined" style="font-size:18px;">check_circle</span> TRANSMISSION_COMPLETE';
