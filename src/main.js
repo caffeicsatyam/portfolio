@@ -191,38 +191,45 @@ document.addEventListener('DOMContentLoaded', () => {
   rightLamp.style.transform = 'scaleX(-1)';
   document.body.appendChild(rightLamp);
 
-  // --- Wall Lamps for Project Cards ---
+  // --- Glowing Climbing Vines for Project Cards ---
   document.querySelectorAll('.project-card').forEach((card, index) => {
     card.style.position = 'relative';
     
-    const wallLamp = document.createElement('div');
-    wallLamp.className = 'wall-lamp';
-    wallLamp.innerHTML = `
-      <svg width="30" height="50" viewBox="0 0 30 50" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
-        <!-- Bracket touching the right side (x=30) and extending left -->
-        <path d="M 30 15 L 12 15 L 12 24" stroke="var(--outline-variant)" stroke-width="2" fill="none" stroke-linecap="round"/>
-        <path d="M 30 8 L 30 22" stroke="var(--outline-variant)" stroke-width="3" stroke-linecap="round"/>
-        <!-- Lantern head hanging at x=12 -->
-        <path d="M 6 24 L 18 24 L 15 36 L 9 36 Z" fill="var(--outline-variant)"/>
-        <!-- Glowing Bulb -->
-        <circle cx="12" cy="30" r="3.5" fill="#fff" style="animation: lampPulse 3.5s infinite alternate ease-in-out;"/>
+    const vine = document.createElement('div');
+    vine.className = 'card-vine';
+    vine.innerHTML = `
+      <svg width="40" height="100" viewBox="0 0 40 100" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
+        <!-- Organic Vine stem mounting on card edge (x=40) -->
+        <path d="M 40 90 Q 25 75 32 55 Q 12 35 24 15" stroke="var(--outline-variant)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        
+        <!-- Top drooping glowing bud -->
+        <path d="M 24 15 Q 26 10 24 6" stroke="var(--outline-variant)" stroke-width="1.8" fill="none"/>
+        <circle cx="24" cy="6" r="3.5" fill="#fff" style="animation: lampPulse 3s infinite alternate ease-in-out;"/>
+        
+        <!-- Middle offset glowing bud -->
+        <path d="M 32 55 Q 18 50 15 42" stroke="var(--outline-variant)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <circle cx="15" cy="42" r="3" fill="#fff" style="animation: lampPulse 2.4s infinite alternate ease-in-out;"/>
+        
+        <!-- Detailed leafy structures -->
+        <path d="M 36 78 Q 24 82 28 72 Q 34 72 36 78 Z" fill="var(--outline-variant)"/>
+        <path d="M 22 30 Q 12 24 18 18 Q 24 22 22 30 Z" fill="var(--outline-variant)"/>
       </svg>
     `;
     
-    wallLamp.style.position = 'absolute';
-    wallLamp.style.top = '24px';
+    vine.style.position = 'absolute';
+    vine.style.top = '16px';
     
-    // Position alternate left/right to keep balance
+    // Position alternate left/right to keep layout organic but balanced
     if (index % 2 === 0) {
-      // Left side: mount on card edge, hang leftwards
-      wallLamp.style.left = '-30px';
+      // Left side: mount on card edge, grow leftwards
+      vine.style.left = '-40px';
     } else {
-      // Right side: mount on card edge, hang rightwards
-      wallLamp.style.right = '-30px';
-      wallLamp.style.transform = 'scaleX(-1)';
+      // Right side: mount on card edge, grow rightwards
+      vine.style.right = '-40px';
+      vine.style.transform = 'scaleX(-1)';
     }
-    wallLamp.style.pointerEvents = 'none';
-    wallLamp.style.zIndex = '5';
-    card.appendChild(wallLamp);
+    vine.style.pointerEvents = 'none';
+    vine.style.zIndex = '5';
+    card.appendChild(vine);
   });
 });
