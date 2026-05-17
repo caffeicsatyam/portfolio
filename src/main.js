@@ -173,6 +173,23 @@ document.addEventListener('DOMContentLoaded', () => {
   `;
   lamp.appendChild(flower1);
 
+  // --- New Sprout 3: Glowing Spiral Fiddlehead/Fern Spine ---
+  const flower3 = document.createElement('div');
+  flower3.style.position = 'absolute';
+  flower3.style.bottom = '0';
+  flower3.style.left = '24px';
+  flower3.innerHTML = `
+    <svg width="24" height="35" viewBox="0 0 24 35" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
+      <!-- Organic Fiddlehead Spiral -->
+      <path d="M 12 35 Q 8 22 14 14 Q 20 8 18 5 Q 15 4 13 7 Q 13 10 16 9" stroke="var(--outline-variant)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+      <!-- Micro Bioluminescent Spores along spine -->
+      <circle cx="18" cy="5" r="2" fill="#bbf7d0" style="animation: greenLampPulse 2s infinite alternate ease-in-out;"/>
+      <circle cx="14" cy="14" r="1.5" fill="#bbf7d0" style="animation: greenLampPulse 2.8s infinite alternate ease-in-out;"/>
+      <circle cx="10" cy="22" r="1.5" fill="#bbf7d0" style="animation: greenLampPulse 1.9s infinite alternate ease-in-out;"/>
+    </svg>
+  `;
+  lamp.appendChild(flower3);
+
   const flower2 = document.createElement('div');
   flower2.style.position = 'absolute';
   flower2.style.bottom = '0';
@@ -205,21 +222,30 @@ document.addEventListener('DOMContentLoaded', () => {
         const vine = document.createElement('div');
         vine.className = 'card-vine';
         vine.innerHTML = `
-          <svg width="40" height="100" viewBox="0 0 40 100" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
+          <svg width="40" height="110" viewBox="0 0 40 110" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
             <!-- Organic Vine stem mounting on container edge (x=40) -->
-            <path d="M 40 90 Q 25 75 32 55 Q 12 35 24 15" stroke="var(--outline-variant)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <path d="M 40 95 Q 25 80 32 60 Q 12 40 24 20" stroke="var(--outline-variant)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
             
-            <!-- Top drooping glowing bud -->
-            <path d="M 24 15 Q 26 10 24 6" stroke="var(--outline-variant)" stroke-width="1.8" fill="none"/>
-            <circle cx="24" cy="6" r="3.5" fill="#bbf7d0" style="animation: greenLampPulse 3s infinite alternate ease-in-out;"/>
+            <!-- Top Drooping Bell-Flower (Snowdrop/Bluebell shape) -->
+            <path d="M 24 20 Q 25 14 24 10" stroke="var(--outline-variant)" stroke-width="1.8" fill="none"/>
+            <!-- Bell Petals -->
+            <path d="M 20 10 Q 24 2 28 10 Q 24 14 20 10 Z" fill="rgba(74, 222, 128, 0.15)" stroke="var(--outline-variant)" stroke-width="1.2"/>
+            <!-- Drooping Glowing Stamen -->
+            <path d="M 24 10 L 24 15" stroke="var(--outline-variant)" stroke-width="1"/>
+            <circle cx="24" cy="15" r="2.5" fill="#bbf7d0" style="animation: greenLampPulse 3s infinite alternate ease-in-out;"/>
             
-            <!-- Middle offset glowing bud -->
-            <path d="M 32 55 Q 18 50 15 42" stroke="var(--outline-variant)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-            <circle cx="15" cy="42" r="3" fill="#bbf7d0" style="animation: greenLampPulse 2.4s infinite alternate ease-in-out;"/>
+            <!-- Middle Leaf-Bracket holding a micro-lantern -->
+            <path d="M 32 60 Q 18 55 15 48 M 15 48 L 15 54" stroke="var(--outline-variant)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+            <!-- Micro-Lantern Cap -->
+            <path d="M 11 54 L 19 54 L 15 50 Z" fill="var(--outline-variant)"/>
+            <!-- Glass Frame -->
+            <path d="M 12 54 L 18 54 L 16.5 64 L 13.5 64 Z" stroke="var(--outline-variant)" stroke-width="1" fill="rgba(74, 222, 128, 0.1)"/>
+            <!-- Core Glowing Filament -->
+            <circle cx="15" cy="59" r="2" fill="#fff" style="animation: greenLampPulse 2.4s infinite alternate ease-in-out;"/>
             
             <!-- Detailed leafy structures -->
-            <path d="M 36 78 Q 24 82 28 72 Q 34 72 36 78 Z" fill="var(--outline-variant)"/>
-            <path d="M 22 30 Q 12 24 18 18 Q 24 22 22 30 Z" fill="var(--outline-variant)"/>
+            <path d="M 36 82 Q 24 86 28 76 Q 34 76 36 82 Z" fill="var(--outline-variant)"/>
+            <path d="M 22 35 Q 12 29 18 23 Q 24 27 22 35 Z" fill="var(--outline-variant)"/>
           </svg>
         `;
         
