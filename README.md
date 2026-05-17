@@ -1,4 +1,4 @@
-# ✦ Satyam Chaturvedi — Personal Portfolio ✦
+# ✦ Satyam Chaturvedi 
 
 A premium personal showcase designed around a highly distinct, immersive visual theme: **The Dark Terminal × Bioluminescent Garden**. 
 

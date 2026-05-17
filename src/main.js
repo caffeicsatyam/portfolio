@@ -139,6 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.head.appendChild(lampStyle);
 
   const isLinksPage = window.location.pathname.includes('links.html');
+  const isIndexPage = !isLinksPage && (window.location.pathname.includes('index.html') || window.location.pathname.endsWith('/') || !window.location.pathname.includes('.html'));
 
   if (!isLinksPage) {
     const lamp = document.createElement('div');
@@ -206,6 +207,16 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     lamp.appendChild(flower2);
 
+    // Scale the tiny base sprouts (referred to as small lamps) bigger on the Index page only!
+    if (isIndexPage) {
+      flower1.style.transform = 'scale(1.4)';
+      flower1.style.transformOrigin = 'bottom left';
+      flower2.style.transform = 'scaleX(-1) scale(1.4)';
+      flower2.style.transformOrigin = 'bottom right';
+      flower3.style.transform = 'scale(1.4)';
+      flower3.style.transformOrigin = 'bottom left';
+    }
+
     document.body.appendChild(lamp);
 
     // --- Artistic SVG Streetlamp (Right) ---
@@ -214,6 +225,29 @@ document.addEventListener('DOMContentLoaded', () => {
     rightLamp.style.right = '32px';
     rightLamp.style.transform = 'scaleX(-1)';
     document.body.appendChild(rightLamp);
+
+    // --- Stylized Repeating Bioluminescent Grass along the entire Bottom ---
+    const grass = document.createElement('div');
+    grass.style.position = 'fixed';
+    grass.style.bottom = '0';
+    grass.style.left = '0';
+    grass.style.right = '0';
+    grass.style.pointerEvents = 'none';
+    grass.style.zIndex = '-2';
+    
+    if (isIndexPage) {
+      // Grass is bigger on the index page (32px) but smaller than the scaled streetlamps
+      grass.style.height = '32px';
+      grass.style.backgroundImage = `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='32' viewBox='0 0 120 32'><path d='M 10 32 Q 15 14 8 6 Q 18 16 18 32 M 40 32 Q 35 16 30 8 M 38 27 Q 30 25 32 27 M 36 21 Q 28 19 30 21 M 34 16 Q 26 14 28 16 M 39 27 Q 47 25 45 27 M 37 21 Q 45 19 43 21 M 35 16 Q 43 14 41 16 M 70 32 Q 65 19 70 14 Q 75 19 70 32 M 95 32 Q 92 14 95 8 M 92 16 Q 86 14 88 16 M 97 16 Q 103 14 101 16' stroke='%23444748' stroke-width='1.3' fill='none' stroke-linecap='round'/><circle cx='8' cy='6' r='1.5' fill='%23bbf7d0'/><circle cx='70' cy='14' r='1.8' fill='%23bbf7d0'/><circle cx='95' cy='8' r='1.8' fill='%23bbf7d0'/><circle cx='92' cy='11' r='1.2' fill='%23bbf7d0'/><circle cx='98' cy='11' r='1.2' fill='%23bbf7d0'/></svg>")`;
+    } else {
+      // Grass is beautifully thin and delicate on other pages (16px)
+      grass.style.height = '16px';
+      grass.style.backgroundImage = `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='16' viewBox='0 0 120 16'><path d='M 10 16 Q 15 7 8 3 Q 18 8 18 16 M 40 16 Q 35 8 30 4 M 38 13 Q 30 12 32 13 M 36 10 Q 28 9 30 10 M 34 8 Q 26 7 28 8 M 39 13 Q 47 12 45 13 M 37 10 Q 45 9 43 10 M 35 8 Q 43 7 41 8 M 70 16 Q 65 9 70 7 Q 75 9 70 16 M 95 16 Q 92 7 95 4 M 92 8 Q 86 7 88 8 M 97 8 Q 103 7 101 8' stroke='%23444748' stroke-width='1.3' fill='none' stroke-linecap='round'/><circle cx='8' cy='3' r='1' fill='%23bbf7d0'/><circle cx='70' cy='7' r='1.2' fill='%23bbf7d0'/><circle cx='95' cy='4' r='1.2' fill='%23bbf7d0'/><circle cx='92' cy='5' r='1' fill='%23bbf7d0'/><circle cx='98' cy='5' r='1' fill='%23bbf7d0'/></svg>")`;
+    }
+    
+    grass.style.backgroundRepeat = 'repeat-x';
+    grass.style.opacity = '0.7';
+    document.body.appendChild(grass);
   }
 
   // --- Distinct Bioluminescent Flora Species for Different Pages ---
