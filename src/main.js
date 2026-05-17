@@ -195,45 +195,60 @@ document.addEventListener('DOMContentLoaded', () => {
   rightLamp.style.transform = 'scaleX(-1)';
   document.body.appendChild(rightLamp);
 
-  // --- Glowing Climbing Vines for Project Cards ---
-  document.querySelectorAll('.project-card').forEach((card, index) => {
-    card.style.position = 'relative';
-    
-    const vine = document.createElement('div');
-    vine.className = 'card-vine';
-    vine.innerHTML = `
-      <svg width="40" height="100" viewBox="0 0 40 100" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
-        <!-- Organic Vine stem mounting on card edge (x=40) -->
-        <path d="M 40 90 Q 25 75 32 55 Q 12 35 24 15" stroke="var(--outline-variant)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  // --- Glowing Climbing Vines for Containers (Projects, Links, Contact) ---
+  const containerSelectors = ['.project-card', '.links-nav', '.contact-section'];
+  containerSelectors.forEach(selector => {
+    document.querySelectorAll(selector).forEach((el, index) => {
+      el.style.position = 'relative';
+      
+      const createVine = (side) => {
+        const vine = document.createElement('div');
+        vine.className = 'card-vine';
+        vine.innerHTML = `
+          <svg width="40" height="100" viewBox="0 0 40 100" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
+            <!-- Organic Vine stem mounting on container edge (x=40) -->
+            <path d="M 40 90 Q 25 75 32 55 Q 12 35 24 15" stroke="var(--outline-variant)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            
+            <!-- Top drooping glowing bud -->
+            <path d="M 24 15 Q 26 10 24 6" stroke="var(--outline-variant)" stroke-width="1.8" fill="none"/>
+            <circle cx="24" cy="6" r="3.5" fill="#bbf7d0" style="animation: greenLampPulse 3s infinite alternate ease-in-out;"/>
+            
+            <!-- Middle offset glowing bud -->
+            <path d="M 32 55 Q 18 50 15 42" stroke="var(--outline-variant)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+            <circle cx="15" cy="42" r="3" fill="#bbf7d0" style="animation: greenLampPulse 2.4s infinite alternate ease-in-out;"/>
+            
+            <!-- Detailed leafy structures -->
+            <path d="M 36 78 Q 24 82 28 72 Q 34 72 36 78 Z" fill="var(--outline-variant)"/>
+            <path d="M 22 30 Q 12 24 18 18 Q 24 22 22 30 Z" fill="var(--outline-variant)"/>
+          </svg>
+        `;
         
-        <!-- Top drooping glowing bud -->
-        <path d="M 24 15 Q 26 10 24 6" stroke="var(--outline-variant)" stroke-width="1.8" fill="none"/>
-        <circle cx="24" cy="6" r="3.5" fill="#bbf7d0" style="animation: greenLampPulse 3s infinite alternate ease-in-out;"/>
+        vine.style.position = 'absolute';
+        vine.style.top = '16px';
+        vine.style.pointerEvents = 'none';
+        vine.style.zIndex = '5';
         
-        <!-- Middle offset glowing bud -->
-        <path d="M 32 55 Q 18 50 15 42" stroke="var(--outline-variant)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-        <circle cx="15" cy="42" r="3" fill="#bbf7d0" style="animation: greenLampPulse 2.4s infinite alternate ease-in-out;"/>
-        
-        <!-- Detailed leafy structures -->
-        <path d="M 36 78 Q 24 82 28 72 Q 34 72 36 78 Z" fill="var(--outline-variant)"/>
-        <path d="M 22 30 Q 12 24 18 18 Q 24 22 22 30 Z" fill="var(--outline-variant)"/>
-      </svg>
-    `;
-    
-    vine.style.position = 'absolute';
-    vine.style.top = '16px';
-    
-    // Position alternate left/right to keep layout organic but balanced
-    if (index % 2 === 0) {
-      // Left side: mount on card edge, grow leftwards
-      vine.style.left = '-40px';
-    } else {
-      // Right side: mount on card edge, grow rightwards
-      vine.style.right = '-40px';
-      vine.style.transform = 'scaleX(-1)';
-    }
-    vine.style.pointerEvents = 'none';
-    vine.style.zIndex = '5';
-    card.appendChild(vine);
+        if (side === 'left') {
+          vine.style.left = '-40px';
+        } else {
+          vine.style.right = '-40px';
+          vine.style.transform = 'scaleX(-1)';
+        }
+        return vine;
+      };
+
+      if (selector === '.project-card') {
+        // Alternating for grid cards
+        if (index % 2 === 0) {
+          el.appendChild(createVine('left'));
+        } else {
+          el.appendChild(createVine('right'));
+        }
+      } else {
+        // Frame central columns (Links directory, Contact form) with vines on both sides!
+        el.appendChild(createVine('left'));
+        el.appendChild(createVine('right'));
+      }
+    });
   });
 });
