@@ -199,13 +199,13 @@ document.addEventListener('DOMContentLoaded', () => {
     wallLamp.className = 'wall-lamp';
     wallLamp.innerHTML = `
       <svg width="30" height="50" viewBox="0 0 30 50" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
-        <!-- Bracket -->
-        <path d="M 0 15 L 18 15 L 18 24" stroke="var(--outline-variant)" stroke-width="2" fill="none" stroke-linecap="round"/>
-        <path d="M 0 8 L 0 22" stroke="var(--outline-variant)" stroke-width="3" stroke-linecap="round"/>
-        <!-- Lantern head -->
-        <path d="M 12 24 L 24 24 L 21 36 L 15 36 Z" fill="var(--outline-variant)"/>
+        <!-- Bracket touching the right side (x=30) and extending left -->
+        <path d="M 30 15 L 12 15 L 12 24" stroke="var(--outline-variant)" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M 30 8 L 30 22" stroke="var(--outline-variant)" stroke-width="3" stroke-linecap="round"/>
+        <!-- Lantern head hanging at x=12 -->
+        <path d="M 6 24 L 18 24 L 15 36 L 9 36 Z" fill="var(--outline-variant)"/>
         <!-- Glowing Bulb -->
-        <circle cx="18" cy="30" r="3.5" fill="#fff" style="animation: lampPulse 3.5s infinite alternate ease-in-out;"/>
+        <circle cx="12" cy="30" r="3.5" fill="#fff" style="animation: lampPulse 3.5s infinite alternate ease-in-out;"/>
       </svg>
     `;
     
@@ -214,9 +214,11 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Position alternate left/right to keep balance
     if (index % 2 === 0) {
-      wallLamp.style.left = '-20px';
+      // Left side: mount on card edge, hang leftwards
+      wallLamp.style.left = '-30px';
     } else {
-      wallLamp.style.right = '-20px';
+      // Right side: mount on card edge, hang rightwards
+      wallLamp.style.right = '-30px';
       wallLamp.style.transform = 'scaleX(-1)';
     }
     wallLamp.style.pointerEvents = 'none';
