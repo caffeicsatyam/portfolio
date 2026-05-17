@@ -223,16 +223,23 @@ document.addEventListener('DOMContentLoaded', () => {
     boy.style.pointerEvents = 'none';
     boy.innerHTML = `
       <svg width="160" height="260" viewBox="0 0 160 260" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
-        <!-- Leaning Back and Torso -->
-        <path d="M 33 260 C 34 240, 38 226, 45 224 C 46 222, 45 220, 44 218 C 42 216, 43 208, 47 206 C 51 204, 54 209, 52 215 C 51 218, 49 221, 48 223 C 50 228, 52 238, 45 260 Z" fill="var(--outline-variant)"/>
-        <!-- Arms holding book -->
-        <path d="M 44 226 Q 54 230 58 238" stroke="var(--outline-variant)" stroke-width="3" fill="none" stroke-linecap="round"/>
-        <!-- Bent Legs -->
-        <path d="M 41 260 Q 64 242 56 260" stroke="var(--outline-variant)" stroke-width="4.5" fill="none" stroke-linecap="round"/>
-        <!-- Glowing Book -->
-        <path d="M 56 238 Q 61 234 66 237 Q 71 234 76 237 L 75 241 Q 70 238 66 241 Q 61 238 56 241 Z" fill="#bbf7d0" style="filter: drop-shadow(0 0 5px #4ade80);"/>
-        <!-- Book Glow cast on face -->
-        <polygon points="48,222 62,236 54,236" fill="rgba(74, 222, 128, 0.15)" style="mix-blend-mode: screen;"/>
+        <!-- Torso & Leaning Back -->
+        <path d="M 34 260 C 33 235, 36 205, 42 195 C 44 193, 44 188, 43 186 C 45 189, 48 195, 46 248 C 42 254, 38 257, 34 260 Z" fill="var(--outline-variant)"/>
+        
+        <!-- Head (tilted forward looking at the book) -->
+        <circle cx="47" cy="178" r="7.5" fill="var(--outline-variant)"/>
+        
+        <!-- Straight Legs stretched out along the ground -->
+        <path d="M 38 260 L 105 260 L 108 252 L 103 252 L 45 248 Z" fill="var(--outline-variant)"/>
+        
+        <!-- Arms extending to hold the book -->
+        <path d="M 42 195 Q 60 210 72 230" stroke="var(--outline-variant)" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+        
+        <!-- Glowing Open Book resting on lap -->
+        <path d="M 70 230 Q 76 226 82 229 Q 88 226 94 229 L 93 234 Q 88 231 82 234 Q 76 231 70 234 Z" fill="#bbf7d0" style="filter: drop-shadow(0 0 8px #4ade80);"/>
+        
+        <!-- Book Glow cast on face/chest -->
+        <polygon points="47,178 84,229 68,229" fill="rgba(74, 222, 128, 0.2)" style="mix-blend-mode: screen;"/>
       </svg>
     `;
     lamp.appendChild(boy);
