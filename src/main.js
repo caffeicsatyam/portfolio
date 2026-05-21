@@ -127,13 +127,28 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Artistic SVG Streetlamp ---
   const lampStyle = document.createElement('style');
   lampStyle.innerHTML = `
+    .glow-bulb {
+      filter: drop-shadow(0 0 15px var(--primary)) drop-shadow(0 0 30px var(--primary));
+      will-change: opacity;
+      animation: lampPulse 4s infinite alternate ease-in-out;
+    }
+    .glow-spore {
+      filter: drop-shadow(0 0 6px #4ade80) drop-shadow(0 0 12px #22c55e);
+      will-change: opacity;
+      animation: greenLampPulse 3s infinite alternate ease-in-out;
+    }
+    .glow-spore-white {
+      filter: drop-shadow(0 0 6px #ffffff);
+      will-change: opacity;
+      animation: greenLampPulse 2.4s infinite alternate ease-in-out;
+    }
     @keyframes lampPulse {
-      0% { filter: drop-shadow(0 0 15px var(--primary)) drop-shadow(0 0 30px var(--primary)); opacity: 0.85; }
-      100% { filter: drop-shadow(0 0 30px var(--primary)) drop-shadow(0 0 60px var(--primary)) drop-shadow(0 0 90px var(--primary)); opacity: 1; }
+      0% { opacity: 0.7; }
+      100% { opacity: 1; }
     }
     @keyframes greenLampPulse {
-      0% { filter: drop-shadow(0 0 8px #4ade80) drop-shadow(0 0 15px #22c55e); opacity: 0.8; }
-      100% { filter: drop-shadow(0 0 18px #4ade80) drop-shadow(0 0 30px #22c55e) drop-shadow(0 0 45px #15803d); opacity: 1; }
+      0% { opacity: 0.5; }
+      100% { opacity: 1; }
     }
   `;
   document.head.appendChild(lampStyle);
