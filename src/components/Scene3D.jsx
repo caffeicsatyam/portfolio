@@ -1,6 +1,16 @@
-import { useRef, useMemo, useEffect, useCallback } from 'react';
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { useRef, useMemo } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
+
+function createSeededRandom(seed) {
+  let state = seed % 2147483647;
+  if (state <= 0) state += 2147483646;
+
+  return () => {
+    state = (state * 16807) % 2147483647;
+    return (state - 1) / 2147483646;
+  };
+}
 
 /* ─── Neural Network Node ─── */
 function NeuronNode({ position, baseColor, size, layerIdx }) {
@@ -50,6 +60,7 @@ function SynapseLines({ connections, nodes }) {
   const { positions, colors } = useMemo(() => {
     const pos = [];
     const col = [];
+    const rand = createSeededRandom(7);
     const colorA = new THREE.Color('#4ade80');
     const colorB = new THREE.Color('#22d3ee');
     const colorDim = new THREE.Color('#1a3a2a');
@@ -59,7 +70,7 @@ function SynapseLines({ connections, nodes }) {
       const to = nodes[toIdx];
       pos.push(from[0], from[1], from[2]);
       pos.push(to[0], to[1], to[2]);
-      const mix = Math.random();
+      const mix = rand();
       const c = colorA.clone().lerp(colorB, mix).lerp(colorDim, 0.5);
       col.push(c.r, c.g, c.b);
       col.push(c.r, c.g, c.b);
@@ -111,10 +122,11 @@ function DataParticles({ count = 80 }) {
 
   const positions = useMemo(() => {
     const pos = new Float32Array(count * 3);
+    const rand = createSeededRandom(13);
     for (let i = 0; i < count; i++) {
-      pos[i * 3] = (Math.random() - 0.5) * 14;
-      pos[i * 3 + 1] = (Math.random() - 0.5) * 10;
-      pos[i * 3 + 2] = (Math.random() - 0.5) * 8;
+      pos[i * 3] = (rand() - 0.5) * 14;
+      pos[i * 3 + 1] = (rand() - 0.5) * 10;
+      pos[i * 3 + 2] = (rand() - 0.5) * 8;
     }
     return pos;
   }, [count]);
@@ -215,6 +227,7 @@ function NeuralNetwork() {
 
   // Generate neural network layers
   const { nodes, connections, nodeData } = useMemo(() => {
+    const rand = createSeededRandom(31);
     // 1 node on left, 1 node on right, with hidden layers in between
     const layers = [1, 5, 8, 5, 1];
     const layerSpacing = 3.2;
@@ -229,13 +242,13 @@ function NeuralNetwork() {
       const x = (layerIdx - (layers.length - 1) / 2) * layerSpacing;
       for (let j = 0; j < neuronCount; j++) {
         const y = (j - (neuronCount - 1) / 2) * 1.4;
-        const z = (Math.random() - 0.5) * 1.0; // Flatter network so it's easier to see
+        const z = (rand() - 0.5) * 1.0; // Flatter network so it's easier to see
         const idx = allNodes.length;
         allNodes.push([x, y, z]);
         allNodeData.push({
           position: [x, y, z],
           color: colors[layerIdx % colors.length],
-          size: (layerIdx === 0 || layerIdx === layers.length - 1) ? 0.25 : 0.12 + Math.random() * 0.08,
+          size: (layerIdx === 0 || layerIdx === layers.length - 1) ? 0.25 : 0.12 + rand() * 0.08,
           layerIdx: layerIdx
         });
 
@@ -243,7 +256,7 @@ function NeuralNetwork() {
           const prevStart = layerStarts[layerIdx - 1];
           for (let k = 0; k < layers[layerIdx - 1]; k++) {
             // Connect heavily to ensure the single input/output nodes are fully connected
-            if (layerIdx === 1 || layerIdx === layers.length - 1 || Math.random() < 0.6) {
+            if (layerIdx === 1 || layerIdx === layers.length - 1 || rand() < 0.6) {
               allConnections.push([prevStart + k, idx]);
             }
           }
@@ -254,20 +267,12 @@ function NeuralNetwork() {
     return { nodes: allNodes, connections: allConnections, nodeData: allNodeData };
   }, []);
 
-  useFrame(({ clock, mouse: mousePos }) => {
-    mouse.current.x = mousePos.x;
-    mouse.current.y = mousePos.y;
-
+  useFrame(({ clock }) => {
     if (groupRef.current) {
-      // Smoothly interpolate rotation to prevent snapping/fluctuation when mouse enters
-      const targetRotY = mouse.current.x * 0.2;
-      const targetRotX = mouse.current.y * 0.2;
-      
-      groupRef.current.rotation.y += (targetRotY - groupRef.current.rotation.y) * 0.05;
-      groupRef.current.rotation.x += (targetRotX - groupRef.current.rotation.x) * 0.05;
-      
-      // Fixed to the top.
-      groupRef.current.position.y = 2.8 + Math.sin(clock.getElapsedTime() * 0.5) * 0.2;
+      const t = clock.getElapsedTime();
+      groupRef.current.rotation.y = Math.sin(t * 0.04) * 0.05;
+      groupRef.current.rotation.x = Math.sin(t * 0.02) * 0.03;
+      groupRef.current.position.y = 2.8 + Math.sin(t * 0.5) * 0.15;
     }
   });
 
@@ -300,9 +305,9 @@ export default function Scene3D() {
       }}
     >
       <Canvas
-        camera={{ position: [0, 0, 10], fov: 50 }}
+        camera={{ position: [0, 0, 12], fov: 45 }}
         dpr={[1, 1.5]}
-        style={{ background: 'transparent' }}
+        style={{ background: 'transparent', width: '100vw', height: '100vh' }}
         gl={{
           alpha: true,
           antialias: true,

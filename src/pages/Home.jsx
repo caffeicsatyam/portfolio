@@ -10,7 +10,6 @@ export default function Home() {
 
   useEffect(() => {
     let i = 0;
-    setSubtitle('');
     const intervalId = setInterval(() => {
       setSubtitle(fullText.substring(0, i + 1));
       i++;
